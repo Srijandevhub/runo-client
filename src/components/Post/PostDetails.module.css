@@ -1,0 +1,46 @@
+.details {
+    padding: 100px 0;
+}
+.tags {
+    display: flex;
+    gap: 13px;
+    margin-bottom: 30px;
+}
+.authorDetails {
+    padding-top: 20px;
+    border-top: 1px solid #C4C4C4;
+}
+.authorMedia {
+    display: flex;
+    align-items: center;
+}
+.authorImage {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.authorImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.authorMediaBody {
+    flex: 1;
+    padding-left: 17px;
+}
+.authorName {
+    margin-top: 0px;
+    margin-bottom: 0px !important;
+    color: #495057;
+    font-weight: 700;
+}
+.authorName a {
+    color: #343A40;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+.authorName a:hover {
+    text-decoration: underline;
+}

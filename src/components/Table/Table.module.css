@@ -1,0 +1,27 @@
+.tableWrapper {
+    overflow: auto;
+    width: 100%;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th {
+    background-color: #ececcb;
+    padding: 12px;
+    text-align: left;
+    color: #000;
+}
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+.table tbody tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+.table td a {
+    color: #495057;
+    text-decoration: none;
+    font-weight: 700;
+}

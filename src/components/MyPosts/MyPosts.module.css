@@ -1,0 +1,51 @@
+.wrapper {
+    padding: 120px 0;
+}
+.green {
+    background-color: #f2f3d6 !important;
+    color: #21d421;
+}
+.red {
+    background-color: #f2f3d6 !important;
+    color: #ce2323;
+}
+.delete {
+    background-color: #f2f3d6 !important;
+    color: #ce2323;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.edit {
+    background-color: #f6f6e5 !important;
+    color: #e2cd2c !important;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.unPub, .pub {
+    background-color: #e2cd2c;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+.unPub::before {
+    content: "";
+    width: 31px;
+    height: 2px;
+    background-color: #ce2323;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 1;
+}

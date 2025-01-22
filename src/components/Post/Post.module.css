@@ -1,0 +1,86 @@
+.postBox {
+    border-radius: 5px;
+    margin-bottom: 50px;
+    transition: 0.3s ease-in-out;
+}
+.postBox:hover {
+    box-shadow: 10px 10px 42px -14px rgba(0,0,0,0.22);
+}
+.postHeader {
+    position: relative;
+}
+.postImage {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+.postCategories {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.postBody {
+    padding: 20px 20px 40px;
+}
+.date {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+.heading {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.heading a {
+    color: #495057;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+}
+.heading a:hover {
+    color: #D4A373;
+}
+.postFooter {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.authorMedia {
+    display: flex;
+    align-items: center;
+}
+.authorImage {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.authorImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.authorMediaBody {
+    flex: 1;
+    padding-left: 17px;
+}
+.authorName {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #495057;
+    font-weight: 700;
+}
+.authorName a {
+    color: #343A40;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+.authorName a:hover {
+    text-decoration: underline;
+}

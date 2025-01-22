@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 60px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lora", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #6C757D;
+  background-color: #F8F9FA;
+}
+.container {
+  max-width: 1340px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.tags {
+  display: inline-block;
+  background-color: rgba(255,255,255,0.15);
+  padding: 0 10px;
+  font-size: 10px;
+  line-height: 22px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  border-radius: 8px;
+}
+.post-body p {
+  font-size: 14px;
+  line-height: 25px;
+  color: #495057;
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+.post-body h1, .post-body h2, .post-body h3 {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 50px;
+  color: #D4A373;
+}
+.post-body img {
+  width: 100%;
+  border-radius: 5px;
+}
+.post-image {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+.container-fluid {
+  max-width: 100%;
+  padding: 0 20px;
+}
+.ql-editor p {
+  font-family: 'Lora', sans-serif;
+  font-size: 14px;
+  line-height: 25px;
+  color: #495057 !important;
+  margin-top: 0px !important;
+  margin-bottom: 50px !important;
+}
+.ql-editor h1, .ql-editor h2, .ql-editor h3 {
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 50px !important;
+  color: #D4A373 !important;
+}
+@media only screen and (max-width: 1599px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media only screen and (max-width: 1399px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  .container {
+    max-width: 970px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  .post-body .row {
+    margin: 0 -15px;
+  }
+  .post-body .col-6 {
+    padding: 0 15px;
+  }
+  .container-fluid {
+    padding: 0 15px;
+  }
+}

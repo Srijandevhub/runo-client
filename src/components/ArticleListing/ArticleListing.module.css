@@ -1,0 +1,79 @@
+.listingSec {
+    padding: 100px 0;
+}
+.row {
+    display: flex;
+    margin: 0 -20px;
+    flex-wrap: wrap;
+}
+.col1, .col2, .col {
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding: 0 20px;
+}
+.col1 {
+    width: 80%;
+}
+.col2 {
+    width: 20%;
+}
+.col {
+    width: 33.3333%;
+}
+.search {
+    width: 100%;
+    height: 45px;
+    padding: 0 17px;
+    border: 1px solid #E5E5E5;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #495057;
+    margin-bottom: 20px;
+}
+.search:focus {
+    border-color: #6C757D;
+}
+.search::placeholder {
+    color: #6C757D;
+}
+.formCheck {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.formLabel {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+}
+.formInput {
+    cursor: pointer;
+}
+.pagination {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.paginationBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #495057;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+.paginationBtn:hover {
+    color: #D4A373;
+}

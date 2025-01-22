@@ -1,0 +1,30 @@
+.editorSec {
+    padding: 100px 0 70px;
+}
+.row {
+    display: flex;
+    margin: 0 -20px;
+    flex-wrap: wrap;
+}
+.col {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: 50%;
+    padding: 0 20px;
+}
+@media only screen and (max-width: 1599px) {
+    .row {
+        margin: 0 -15px;
+    }
+    .col {
+        padding: 0 15px;
+    }
+    .editorSec {
+        padding: 50px 0;
+    }
+}
+@media only screen and (max-width: 865px) {
+    .col {
+        width: 100%;
+    }
+}
