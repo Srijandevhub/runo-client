@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux"
 import { verfiedUser } from "./utils/userSlice"
 import WritePage from "./pages/WritePage"
 import MyPostsPage from "./pages/MyPostsPage"
+import EditPostPage from "./pages/EditPostPage"
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/myprofile" element={<ProtectedRoute><MyProfilePage /></ProtectedRoute>}/>
             <Route path="/write" element={<ProtectedRoute><WritePage /></ProtectedRoute>}/>
             <Route path="/myposts" element={<ProtectedRoute><MyPostsPage /></ProtectedRoute>}/>
+            <Route path="/edit/:id" element={<ProtectedRoute><EditPostPage /></ProtectedRoute>}/>
         </Routes>
     )
 }

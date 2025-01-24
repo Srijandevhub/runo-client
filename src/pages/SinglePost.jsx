@@ -41,7 +41,7 @@ const SinglePost = () => {
     }, [])
     return (
         <Layout>
-            <Banner2 title={article?.title} category={category} desc={article?.shortdescription} author={user} date={article?.createdAt}/>
+            <Banner2 image={article?.coverimage} title={article?.title} category={article?.categorytitle} desc={article?.shortdescription} author={`${user?.firstname} ${user?.lastname}`} date={article?.createdAt}/>
             <PostDetails data={article} user={user}/>
             <RelatedPost />
         </Layout>

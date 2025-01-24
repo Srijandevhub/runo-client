@@ -1,7 +1,8 @@
 import styles from './Banner.module.css'
 import Banner1 from '../../assets/banner.jpg'
 import { useEffect, useState } from 'react'
-const Banner2 = ({ title, category, desc, author, date }) => {
+import { baseUrl2 } from '../../data/url';
+const Banner2 = ({ image, title, category, desc, author, date }) => {
     const [created, setCreated] = useState("");
     useEffect(() => {
         const getDate = new Date(date);
@@ -12,11 +13,11 @@ const Banner2 = ({ title, category, desc, author, date }) => {
     }, [date])
     return (
         <div className={styles.bannerBox}>
-            <img src={Banner1} alt="image 1" className={styles.bannerImage}/>
+            <img src={`${baseUrl2}/uploads/articles/${image}`} alt="image 1" className={styles.bannerImage}/>
             <div className={styles.bannerContent}>
                 <div className="container">
                     <div className={styles.bannerCategories}>
-                        <span className="tags">{category?.title}</span>
+                        <span className="tags">{category}</span>
                     </div>
                     <strong className={styles.bannerHeading}>{title}</strong>
                     <div className={styles.bannerMedia}>
@@ -25,7 +26,7 @@ const Banner2 = ({ title, category, desc, author, date }) => {
                             <p>{desc}</p>
                         </div>
                     </div>
-                    <p className={styles.author}>By {author?.firstname} {author?.lastname}</p>
+                    <p className={styles.author}>By {author}</p>
                 </div>
             </div>
         </div>

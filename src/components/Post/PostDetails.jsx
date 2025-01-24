@@ -15,10 +15,10 @@ const PostDetails = ({ data, user }) => {
                 <div className={styles.authorDetails}>
                     <div className={styles.authorMedia}>
                         <i className={styles.authorImage}>
-                            <img src={user?.profileimage ? `${baseUrl2}/uploads/users/${user?.profileimage}` : user?.gender ? Maleavatar : Femaleavatar} alt='avatar'/>
+                            <img src={`${baseUrl2}/uploads/users/${user?.profileimage}`} alt='avatar'/>
                         </i>
                         <div className={styles.authorMediaBody}>
-                            <p className={styles.authorName}>By <Link to={`/profile/${user?._id}`}>{user?.firstname} {user?.lastname}</Link></p>
+                            <p className={styles.authorName}>By <Link to={`/profile/${data?.userid}`}>{user?.firstname} {user?.lastname}</Link></p>
                             <span className={styles.authorDesignation}>{user?.shortdescription}</span>
                         </div>
                     </div>

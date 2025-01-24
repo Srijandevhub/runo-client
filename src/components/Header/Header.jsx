@@ -69,7 +69,7 @@ const Header = ({ activeMenu }) => {
                                 :
                                 <div className={styles.profileButton}>
                                     <i>
-                                        <img src={user.profileimage ? `${baseUrl2}/uploads/users/${user.profileimage}` : user.gender === 'male' ? Maleavatar : Femaleavatar} alt='avatar'/>
+                                        <img src={`${baseUrl2}/uploads/users/${user.profileimage}`} alt='avatar'/>
                                     </i>
                                     <span className={styles.profileName}>{user.username}</span>
                                     <div className={styles.profileDropdown}>

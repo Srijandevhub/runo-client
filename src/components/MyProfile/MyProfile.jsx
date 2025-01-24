@@ -55,8 +55,7 @@ const MyProfile = () => {
             </div>
             <div className={styles.profileImageWrapper}>
                 <div className='container'>
-                    <div className={styles.profileImage} style={{ backgroundImage: `url(${user?.profileimage
- ? `${baseUrl2}/uploads/users/${user.profileimage}` : user?.gender === "male" ? Maleavatar : Femaleavatar})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+                    <div className={styles.profileImage} style={{ backgroundImage: `url(${baseUrl2}/uploads/users/${user.profileimage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                         <input type='file' accept='image/*' className={styles.inputFile} onChange={(e) => {
                             const formData = new FormData();
                             formData.append("profileimage", e.target.files[0]);

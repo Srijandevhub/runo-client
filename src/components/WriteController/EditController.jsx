@@ -6,23 +6,26 @@ import Editor from './Editor';
 import { apiVersion, baseUrl, baseUrl2 } from '../../data/url';
 import axios from 'axios';
 import useToast from '../../customhooks/useToast';
+import FormCheck from '../FormGroup/FormCheck';
 
-const WriteController = () => {
-    const [coverImage, setCoverImage] = useState(Cover);
+const EditController = ({ data }) => {
+    const [coverImage, setCoverImage] = useState(`${baseUrl2}/uploads/articles/${data?.coverimage}`);
     const [coverImageFile, setCoverImageFile] = useState(null);
 
-    const [thumbnail, setThumbnail] = useState(Cover);
+    const [thumbnail, setThumbnail] = useState(`${baseUrl2}/uploads/articles/${data?.thumbnail}`);
     const [thumbnailFile, setThumbnailFile] = useState(null);
 
-    const [title, setTitle] = useState("");
-    const [shortdescription, setShortdescription] = useState("");
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState(data?.title);
+    const [shortdescription, setShortdescription] = useState(data?.shortdescription);
+    const [content, setContent] = useState(data?.content);
     
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
 
-    const [selectedCategory, setSelectedCategory] = useState("0");
-    const [selectedTag, setSelectedTag] = useState("0");
+    const [selectedCategory, setSelectedCategory] = useState(data?.categoryid);
+    const [selectedTag, setSelectedTag] = useState(data?.tagid);
+
+    const [archived, setArchived] = useState(false);
 
     const makeToast = useToast();
 
@@ -37,45 +40,6 @@ const WriteController = () => {
             setCoverImageFile(file);
         }
         e.target.value = null;
-    }
-
-    const saveArticle = async () => {
-        try {
-            const formData = new FormData();
-            formData.append("categoryid", selectedCategory);
-            formData.append("tagid", selectedTag);
-            formData.append("title", title);
-            formData.append("shortdescription", shortdescription);
-            formData.append("content", content);
-            formData.append("isarchieved", true);
-            formData.append("coverimage", coverImageFile);
-            formData.append("thumbnail", thumbnailFile);
-            const res = await axios.post(`${baseUrl}/${apiVersion}/article/add-article`, formData, { withCredentials: true });
-            if (res.status === 200) {
-                makeToast(res.status, res.data.message, true, `/post/${res.data.article.title}/${res.data.article._id}`);
-            }
-        } catch (error) {
-            makeToast(error.status, error.response.data.message);
-        }
-    }
-    const publishArticle = async () => {
-        try {
-            const formData = new FormData();
-            formData.append("categoryid", selectedCategory);
-            formData.append("tagid", selectedTag);
-            formData.append("title", title);
-            formData.append("shortdescription", shortdescription);
-            formData.append("content", content);
-            formData.append("isarchieved", false);
-            formData.append("coverimage", coverImageFile);
-            formData.append("thumbnail", thumbnailFile);
-            const res = await axios.post(`${baseUrl}/${apiVersion}/article/add-article`, formData, { withCredentials: true });
-            if (res.status === 200) {
-                makeToast(res.status, res.data.message, true, `/post/${res.data.article.title}/${res.data.article._id}`);
-            }
-        } catch (error) {
-            makeToast(error.status, error.response.data.message);
-        }
     }
 
     useEffect(() => {
@@ -105,6 +69,39 @@ const WriteController = () => {
         fetchTags();
     }, [])
 
+    const handleUpdate = async () => {
+        try {
+            const formData = new FormData();
+            formData.append("categoryid", selectedCategory);
+            formData.append("tagid", selectedTag);
+            formData.append("title", title);
+            formData.append("shortdescription", shortdescription);
+            formData.append("content", content);
+            formData.append("isarchieved", archived);
+            formData.append("coverimage", coverImageFile);
+            formData.append("thumbnail", thumbnailFile);
+            const res = await axios.put(`${baseUrl}/${apiVersion}/article/update-article/${data._id}`, formData, {
+                withCredentials: true
+            });
+            if (res.status === 200) {
+                makeToast(res.status, res.data.message);
+            }
+        } catch (error) {
+            makeToast(error.status, error.response.data.message);
+        }
+    }
+
+    useEffect(() => {
+        setCoverImage(`${baseUrl2}/uploads/articles/${data?.coverimage}`);
+        setThumbnail(`${baseUrl2}/uploads/articles/${data?.thumbnail}`);
+        setTitle(data?.title);
+        setShortdescription(data?.shortdescription);
+        setContent(data?.content);
+        setSelectedCategory(data?.categoryid);
+        setSelectedTag(data?.tagid);
+        setArchived(data?.isarchieved);
+    }, [data]);
+
     return (
         <>
             <div className={styles.cover} style={{ backgroundImage: `url(${coverImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -117,7 +114,7 @@ const WriteController = () => {
                 <div className='container'>
                     <div>
                         <label className={styles.label}>Category*</label>
-                        <select defaultValue={categories[0]?._id || 0} className={styles.formControl} onChange={(e) => {
+                        <select defaultValue={selectedCategory} className={styles.formControl} onChange={(e) => {
                             setSelectedCategory(e.target.value);
                         }}>
                             {
@@ -129,8 +126,8 @@ const WriteController = () => {
                     </div>
                     <div>
                         <label className={styles.label}>Tags*</label>
-                        <select defaultValue={tags[0]?._id || 0} className={styles.formControl} onChange={(e) => {
-                            setSelectedTag(e.target.value);
+                        <select defaultValue={selectedTag} className={styles.formControl} onChange={(e) => {
+                            setSelectedTag(e.target.value)
                         }}>
                             {
                                 tags.map((item, index) => {
@@ -159,13 +156,13 @@ const WriteController = () => {
                             setTitle(val);
                         }
                     }}/>
-                    <p className={styles.limiter}>{title.length}/100</p>
+                    <p className={styles.limiter}>{title?.length}/100</p>
                     <FormGroup1 label={"Short Description"} required={true} value={shortdescription} onChange={(val) => {
                         if (shortdescription.length <= 200) {
                             setShortdescription(val);
                         }
                     }}/>
-                    <p className={styles.limiter}>{shortdescription.length}/200</p>
+                    <p className={styles.limiter}>{shortdescription?.length}/200</p>
                     <Editor value={content} onChange={(val) => setContent(val)} onUploadImage={(arr) => {
                         const newContent = arr.map((item) => {
                             return `<div class="row">
@@ -176,9 +173,9 @@ const WriteController = () => {
                         }).join("");
                         setContent((prev) => prev + newContent);
                     }}/>
-                    <div className={styles.btnWrapper}>
-                        <button onClick={() => saveArticle()}>Save</button>
-                        <button onClick={() => publishArticle()}>Publish</button>
+                    <div className={styles.btnWrapper} style={{ alignItems: 'center' }}>
+                        <FormCheck value={archived} onChange={(val) => setArchived(val)} label={"Is Archived"} id={"archived"}/>
+                        <button onClick={() => handleUpdate()}>Update</button>
                     </div>
                 </div>
             </div>
@@ -186,4 +183,4 @@ const WriteController = () => {
     )
 }
 
-export default WriteController
+export default EditController
