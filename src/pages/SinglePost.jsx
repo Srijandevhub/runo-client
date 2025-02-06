@@ -6,16 +6,17 @@ import Layout from "../layouts/Layout"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { apiVersion, baseUrl } from "../data/url"
+import { useSelector } from "react-redux"
 
 const SinglePost = () => {
 
     const { id } = useParams();
     const [article, setArticle] = useState(null);
     const [user, setUser] = useState(null);
-    const [category, setCategory] = useState(null);
-    const [tag, setTag] = useState(null);
 
     const navigate = useNavigate();
+
+    const userGlobal = useSelector((state) => state.user.data);
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -24,11 +25,9 @@ const SinglePost = () => {
                 if (res.status === 200) {
                     setArticle(res.data.article);
                     setUser(res.data.user);
-                    setCategory(res.data.category);
-                    setTag(res.data.tag);
                 }
             } catch (error) {
-                if (error.status === 400 || error.status === 500) {
+                if (error.status === 400 || error.status === 500 || error.status === 401 || error.status === 403) {
                     navigate("/");
                 }
             }
@@ -39,6 +38,15 @@ const SinglePost = () => {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [])
+
+    useEffect(() => {
+        if (!userGlobal) {
+            if (article?.isarchieved) {
+                navigate("/");
+            }
+        }
+    }, [userGlobal, article])
+
     return (
         <Layout>
             <Banner2 image={article?.coverimage} title={article?.title} category={article?.categorytitle} desc={article?.shortdescription} author={`${user?.firstname} ${user?.lastname}`} date={article?.createdAt}/>

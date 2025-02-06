@@ -175,7 +175,7 @@ const EditController = ({ data }) => {
                     }}/>
                     <div className={styles.btnWrapper} style={{ alignItems: 'center' }}>
                         <FormCheck value={archived} onChange={(val) => setArchived(val)} label={"Is Archived"} id={"archived"}/>
-                        <button onClick={() => handleUpdate()}>Update</button>
+                        <button onClick={() => handleUpdate()} style={{ marginBottom: "15px" }}>Update</button>
                     </div>
                 </div>
             </div>
