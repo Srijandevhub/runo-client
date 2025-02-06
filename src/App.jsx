@@ -12,6 +12,7 @@ import { verfiedUser } from "./utils/userSlice"
 import WritePage from "./pages/WritePage"
 import MyPostsPage from "./pages/MyPostsPage"
 import EditPostPage from "./pages/EditPostPage"
+import Dashboard from "./components/Dashboard/Dashboard"
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/write" element={<ProtectedRoute><WritePage /></ProtectedRoute>}/>
             <Route path="/myposts" element={<ProtectedRoute><MyPostsPage /></ProtectedRoute>}/>
             <Route path="/edit/:id" element={<ProtectedRoute><EditPostPage /></ProtectedRoute>}/>
+            <Route path="/admin/dasboard" element={<Dashboard />}/>
         </Routes>
     )
 }

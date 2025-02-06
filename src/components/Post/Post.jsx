@@ -17,7 +17,9 @@ const Post = ({ data }) => {
     return (
         <div className={styles.postBox}>
             <div className={styles.postHeader}>
-                <img src={`${baseUrl2}/uploads/articles/${data.thumbnail}`} alt='blog image' className={styles.postImage}/>
+                <Link to={`/post/${data.title}/${data._id}`}>
+                    <img src={`${baseUrl2}/uploads/articles/${data.thumbnail}`} alt='blog image' className={styles.postImage}/>
+                </Link>
                 <div className={styles.postCategories}>
                     <span className="tags">{data.categorytitle}</span>
                 </div>

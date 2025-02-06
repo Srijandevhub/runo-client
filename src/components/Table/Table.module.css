@@ -11,6 +11,7 @@
     padding: 12px;
     text-align: left;
     color: #000;
+    white-space: nowrap;
 }
 .table td {
     padding: 12px;

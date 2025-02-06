@@ -79,6 +79,7 @@ const ArticleListing = () => {
                     <div className={styles.col1}>
                         <div className={styles.row}>
                             {
+                                posts.length > 0 &&
                                 posts.map((item, index) => {
                                     return (
                                         <div className={styles.col} key={index}>
@@ -86,6 +87,7 @@ const ArticleListing = () => {
                                         </div>
                                     )
                                 })
+                                
                             }
                         </div>
                         <div className={styles.pagination}>
@@ -109,20 +111,6 @@ const ArticleListing = () => {
                                 )
                             })
                         }
-                        
-                        {/* <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div>
-                        <h5 className={styles.widgetHeading}>Authors</h5>
-                        <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div>
-                        <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div> */}
                     </div>
                 </div>
             </div>

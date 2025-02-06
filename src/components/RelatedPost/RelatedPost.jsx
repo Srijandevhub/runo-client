@@ -2,7 +2,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from './RelatedPost.module.css'
 import Post2 from "../Post/Post2";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { apiVersion, baseUrl } from "../../data/url";
 const RelatedPost = () => {
+    const { id } = useParams();
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const res = await axios.get(`${baseUrl}/${apiVersion}/article/related-articles/${id}`);
+                if (res.status === 200) {
+                    setPosts(res.data.articles);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchPosts();
+    }, [id])
+
     return (
         <div className={styles.postSec}>
             <div className='container' style={{ maxWidth: '100%' }}>
@@ -23,15 +44,15 @@ const RelatedPost = () => {
                         }
                     }}
                 >
-                    <SwiperSlide>
-                        <Post2 />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Post2 />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Post2 />
-                    </SwiperSlide>
+                    {
+                        posts.map((item, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <Post2 data={item}/>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
                 </Swiper>
             </div>
         </div>
