@@ -44,3 +44,66 @@
 .authorName a:hover {
     text-decoration: underline;
 }
+.box {
+    width: 100%;
+    height: 120px;
+    resize: none;
+    padding: 17px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+    outline: none;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #343A40;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+.commentBox {
+    margin-top: 20px;
+}
+.commentUser {
+    display: flex;
+    align-items: center;
+}
+.commentUser i {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+.commentUser i img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profileName {
+    font-size: 13px;
+    flex: 1;
+    padding-left: 10px;
+    font-weight: 700;
+}
+.commentBody {
+    padding: 17px;
+    background-color: #eee;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.delBtn {
+    display: block;
+    float: right;
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ab0f0f;
+    cursor: pointer;
+}

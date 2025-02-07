@@ -1,6 +1,4 @@
 import styles from './Post.module.css'
-import Blog from "../../assets/Blog Image.jpg"
-import Author from '../../assets/cu.png'
 import { Link } from 'react-router-dom'
 import { baseUrl2 } from '../../data/url'
 import { useEffect, useState } from 'react'

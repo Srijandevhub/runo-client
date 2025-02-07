@@ -18,8 +18,14 @@
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
 }
+.table tbody tr {
+    transition: 0.3s ease-in-out;
+}
 .table tbody tr:nth-child(even) {
     background-color: #eeeeee;
+}
+.table tbody tr:hover {
+    background-color: #ddd;
 }
 .table td a {
     color: #495057;

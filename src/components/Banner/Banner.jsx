@@ -3,10 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 
-import Banner1 from '../../assets/banner.jpg'
-import Banner2 from '../../assets/banner2.png'
-import Banner3 from '../../assets/banner3.jpg'
-import Banner4 from '../../assets/banner4.jpg'
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useToast from "../../customhooks/useToast";

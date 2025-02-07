@@ -1,5 +1,4 @@
 import styles from './Banner.module.css'
-import Banner1 from '../../assets/banner.jpg'
 import { useEffect, useState } from 'react'
 import { baseUrl2 } from '../../data/url';
 const Banner2 = ({ image, title, category, desc, author, date }) => {

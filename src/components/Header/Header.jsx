@@ -6,10 +6,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { apiVersion, baseUrl, baseUrl2 } from '../../data/url'
 import { logoutUser } from '../../utils/userSlice'
-import FormGroup1 from '../FormGroup/FormGroup1'
 import Post from '../Post/Post'
 import axios from 'axios'
-import Post2 from '../Post/Post2'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import "swiper/css";
