@@ -4,6 +4,7 @@ import Author from '../../assets/cu.png'
 import { Link } from 'react-router-dom'
 import { baseUrl2 } from '../../data/url'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const Post = ({ data }) => {
     const [date, setDate] = useState("");
@@ -14,6 +15,7 @@ const Post = ({ data }) => {
         const day = String(getDate.getDate()).padStart(2, '0');
         setDate(day + "." + month + "." + year);
     }, [])
+    const user = useSelector((state) => state.user.data);
     return (
         <div className={styles.postBox}>
             <div className={styles.postHeader}>
@@ -39,7 +41,7 @@ const Post = ({ data }) => {
                         <img src={`${baseUrl2}/uploads/users/${data.authorimage}`} alt='author'/>
                     </i>
                     <div className={styles.authorMediaBody}>
-                        <p className={styles.authorName}>By <Link to={`/profile/${data.userid}`}>{data.author}</Link></p>
+                        <p className={styles.authorName}>By <Link to={user?._id.toString() === data.userid.toString() ? '/myprofile' : `/profile/${data.userid}`}>{data.author}</Link></p>
                         <span className={styles.authorDesignation}>{data.authordes}</span>
                     </div>
                 </div>

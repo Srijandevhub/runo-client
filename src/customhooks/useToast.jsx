@@ -6,7 +6,7 @@ const useToast = () => {
     const makeToast = (status, message, redirect = false, redirecturl = "") => {
         const handleRedirect = () => {
             if (redirect && redirecturl) {
-                navigate(redirecturl);
+                navigate(redirecturl, { replace: true });
             }
         }
         if (status === 200) {
@@ -17,7 +17,7 @@ const useToast = () => {
                 pauseOnFocusLoss: false,
                 progress: false,
                 autoClose: 1000,
-                onClick: close(),
+                onClick: toast.dismiss,
                 onClose: handleRedirect()
             })
         } else if (status === 400) {

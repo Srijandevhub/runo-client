@@ -12,6 +12,9 @@ import { verfiedUser } from "./utils/userSlice"
 import WritePage from "./pages/WritePage"
 import MyPostsPage from "./pages/MyPostsPage"
 import EditPostPage from "./pages/EditPostPage"
+import ProfilePage from "./pages/ProfilePage"
+import AdminProtected from "./components/ProtectedRoute/AdminProtected"
+import AdminDashboard from "./pages/AdminDashboard"
 
 const App = () => {
 
@@ -32,6 +35,8 @@ const App = () => {
             <Route path="/write" element={<ProtectedRoute><WritePage /></ProtectedRoute>}/>
             <Route path="/myposts" element={<ProtectedRoute><MyPostsPage /></ProtectedRoute>}/>
             <Route path="/edit/:id" element={<ProtectedRoute><EditPostPage /></ProtectedRoute>}/>
+            <Route path="/profile/:id" element={<ProfilePage />}/>
+            <Route path="/admin/dashboard" element={<AdminProtected><AdminDashboard /></AdminProtected>}/>
         </Routes>
     )
 }

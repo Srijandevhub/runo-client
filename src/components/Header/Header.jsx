@@ -76,6 +76,10 @@ const Header = ({ activeMenu }) => {
                                         <Link to="/myprofile" className={styles.dropdownLink}>My Profile</Link>
                                         <Link to="/myposts" className={styles.dropdownLink}>My Posts</Link>
                                         <Link to="/write" className={styles.dropdownLink}>Write</Link>
+                                        {
+                                            user.role === 'admin' &&
+                                            <Link to="/admin/dashboard" className={styles.dropdownLink}>Dashboard</Link>
+                                        }
                                         <button className={styles.dropdownLink} onClick={() => dispatch(logoutUser())}>Logout</button>
                                     </div>
                                 </div>
