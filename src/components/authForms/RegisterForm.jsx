@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { apiVersion, baseUrl } from '../../data/url'
 import useToast from '../../customhooks/useToast'
-import FormCheck from '../FormGroup/FormCheck'
 
 
 const RegisterForm = () => {

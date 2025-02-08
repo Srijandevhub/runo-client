@@ -10,6 +10,8 @@ const MyPosts = () => {
     const [posts, setPosts] = useState([]);
     const makeToast = useToast();
 
+    const [limit, setLimit] = useState(25);
+
     const [refresh, setRefresh] = useState(false);
     const handleDeletePost = async (id) => {
         try {
@@ -33,28 +35,48 @@ const MyPosts = () => {
             makeToast(error.status, error.response.data.message);
         }
     }
+    const [pagination, setPagination] = useState(null);
+    const [skip, setSkip] = useState(0);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get(`${baseUrl}/${apiVersion}/article/get-articles`, { withCredentials: true });
+                const res = await axios.get(`${baseUrl}/${apiVersion}/article/get-articles`, { withCredentials: true, 
+                    params: {
+                        limit: limit,
+                        skip: skip
+                    }
+                });
                 if (res.status === 200) {
                     setPosts(res.data.articles);
+                    setPagination(res.data.pagination);
                 }
             } catch (error) {
                 makeToast(error.status, error.response.data.message);
             }
         }
         fetchPosts();
-    }, [refresh])
+    }, [refresh, limit, skip])
+
     return (
         <div className={styles.wrapper}>
             <div className='container'>
+                <div className={styles.filter}>
+                    <div className={styles.filterRow}>
+                        <div className={styles.filterLimit}>
+                            <select defaultValue={limit} onChange={(e) => setLimit(e.target.value)}>
+                                <option value={25}>25</option>
+                                <option value={50}>50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <Table>
                     <thead>
                         <tr>
                             <th>Sl No</th>
                             <th>Title</th>
+                            <th>Date</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -62,11 +84,21 @@ const MyPosts = () => {
                     <tbody>
                         {
                             posts.map((item, index) => {
+                                const getDate = () => {
+                                    const curr = new Date(item.createdAt);
+                                    const day = curr.getDate().toString().padStart(2, '0');
+                                    const month = (curr.getMonth() + 1).toString().padStart(2, '0');
+                                    const year = curr.getFullYear();
+                                    return `${day}.${month}.${year}`
+                                }
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>
                                             <Link to={`/post/${item.title}/${item._id}`}>{item.title}</Link>
+                                        </td>
+                                        <td>
+                                            <b>{getDate()}</b>
                                         </td>
                                         <td>
                                             {
@@ -108,6 +140,13 @@ const MyPosts = () => {
                         }
                     </tbody>
                 </Table>
+                <div className={styles.pagination}>
+                    {pagination?.previousPage && <button className={styles.paginationBtn} onClick={() => setSkip((pagination?.previousPage - 1) * limit)}>Previous</button>}
+                    {Array.from({ length: pagination?.totalPages }, (_, i) => (
+                        <button key={i} onClick={() => setSkip(i * limit)} className={`${styles.paginationBtn} ${pagination?.currentPage === i + 1 ? `${styles.active}` : ""}`}>{i + 1}</button>
+                    ))}
+                    {pagination?.nextPage && <button onClick={() => setSkip((pagination?.nextPage - 1) * limit)} className={styles.paginationBtn}>Next</button>}
+                </div>
             </div>
         </div>
     )

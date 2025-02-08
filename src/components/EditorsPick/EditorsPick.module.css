@@ -12,6 +12,14 @@
     width: 50%;
     padding: 0 20px;
 }
+.pageHeading {
+    font-size: 36px;
+    line-height: 46px;
+    color: #495057;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
 @media only screen and (max-width: 1599px) {
     .row {
         margin: 0 -15px;
@@ -21,6 +29,10 @@
     }
     .editorSec {
         padding: 50px 0;
+    }
+    .pageHeading {
+        font-size: 32px;
+        line-height: 42px;
     }
 }
 @media only screen and (max-width: 865px) {

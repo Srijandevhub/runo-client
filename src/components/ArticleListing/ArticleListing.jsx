@@ -5,6 +5,8 @@ import axios from 'axios';
 import { apiVersion, baseUrl } from '../../data/url';
 import { useSearchParams } from 'react-router-dom';
 import useToast from '../../customhooks/useToast';
+
+
 const ArticleListing = () => {
     const [posts, setPosts] = useState([]);
     const [pagination, setPagination] = useState(null);
@@ -79,6 +81,7 @@ const ArticleListing = () => {
                     <div className={styles.col1}>
                         <div className={styles.row}>
                             {
+                                posts.length > 0 &&
                                 posts.map((item, index) => {
                                     return (
                                         <div className={styles.col} key={index}>
@@ -86,6 +89,7 @@ const ArticleListing = () => {
                                         </div>
                                     )
                                 })
+                                
                             }
                         </div>
                         <div className={styles.pagination}>
@@ -97,32 +101,18 @@ const ArticleListing = () => {
                         </div>
                     </div>
                     <div className={styles.col2}>
-                        <input type='text' className={styles.search} placeholder='Search posts...' onChange={(e) => updateQuery(e.target.value)}/>
+                        <input type='text' className={styles.search} placeholder='Search posts...' onChange={(e) => updateQuery(e.target.value)} value={query ? query : ""}/>
                         <h5 className={styles.widgetHeading}>Categories</h5>
                         {
                             categories.map((item, index) => {
                                 return (
                                     <div className={styles.formCheck} key={index}>
-                                        <input type='checkbox' className={styles.formInput} id={item.title} onChange={() => updateCategoryQuery(item._id)}/>
+                                        <input type='checkbox' className={styles.formInput} id={item.title} onChange={() => updateCategoryQuery(item._id)} checked={categoryids?.split(",").includes(item._id)}/>
                                         <label htmlFor={item.title} className={styles.formLabel}>{item.title}</label>
                                     </div>
                                 )
                             })
                         }
-                        
-                        {/* <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div>
-                        <h5 className={styles.widgetHeading}>Authors</h5>
-                        <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div>
-                        <div className={styles.formCheck}>
-                            <input type='checkbox' className={styles.formInput} id="adventure"/>
-                            <label htmlFor='adventure' className={styles.formLabel}>Adventure</label>
-                        </div> */}
                     </div>
                 </div>
             </div>

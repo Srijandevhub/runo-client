@@ -49,3 +49,36 @@
     transform: translate(-50%, -50%) rotate(45deg);
     z-index: 1;
 }
+.filterRow {
+    display: flex;
+}
+.filterLimit {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: 5%;
+}
+.filterLimit select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    outline: none;
+}
+.filter {
+    margin-bottom: 20px;
+}
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.paginationBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.paginationBtn.active {
+    color: #ce2323;
+}

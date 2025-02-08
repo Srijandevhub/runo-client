@@ -1,6 +1,4 @@
 import styles from './Post.module.css'
-import Blog from "../../assets/Blog Image.jpg"
-import Author from '../../assets/cu.png'
 import { Link } from 'react-router-dom'
 import { baseUrl2 } from '../../data/url'
 import { useEffect, useState } from 'react'
@@ -19,7 +17,9 @@ const Post = ({ data }) => {
     return (
         <div className={styles.postBox}>
             <div className={styles.postHeader}>
-                <img src={`${baseUrl2}/uploads/articles/${data.thumbnail}`} alt='blog image' className={styles.postImage}/>
+                <Link to={`/post/${data.title}/${data._id}`}>
+                    <img src={`${baseUrl2}/uploads/articles/${data.thumbnail}`} alt='blog image' className={styles.postImage}/>
+                </Link>
                 <div className={styles.postCategories}>
                     <span className="tags">{data.categorytitle}</span>
                 </div>

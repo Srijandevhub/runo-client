@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage"
 import AdminProtected from "./components/ProtectedRoute/AdminProtected"
 import AdminDashboard from "./pages/AdminDashboard"
 
+
 const App = () => {
 
     const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/edit/:id" element={<ProtectedRoute><EditPostPage /></ProtectedRoute>}/>
             <Route path="/profile/:id" element={<ProfilePage />}/>
             <Route path="/admin/dashboard" element={<AdminProtected><AdminDashboard /></AdminProtected>}/>
+
         </Routes>
     )
 }
