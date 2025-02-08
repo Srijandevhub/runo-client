@@ -18,8 +18,6 @@ const AdminProtected = ({ children }) => {
 
     return children
 
-    // return (data && data.role === 'admin') ? children : <Navigate to="/signin"/>
-
 }
 
 export default AdminProtected

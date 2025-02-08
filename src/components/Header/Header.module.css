@@ -230,7 +230,7 @@
     flex-wrap: wrap;
 }
 .postCol {
-    width: 25%;
+    width: 33.333%;
     flex: 0 0 auto;
     max-width: 100%;
     padding: 0 15px;
@@ -252,12 +252,12 @@
 }
 @media only screen and (max-width: 1199px) {
     .postCol {
-        width: 33.3333%;
+        width: 50%;
     }
 }
 @media only screen and (max-width: 992px) {
     .postCol {
-        width: 50%;
+        width: 100%;
     }
 }
 @media only screen and (max-width: 767px) {

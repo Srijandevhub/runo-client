@@ -11,6 +11,7 @@ import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import "swiper/css";
+import Post2 from '../Post/Post2'
 
 const Header = ({ activeMenu }) => {
     const [mobileMenuShow, setMobileMenuShow] = useState(false);
@@ -36,7 +37,7 @@ const Header = ({ activeMenu }) => {
     const [query, setQuery] = useState("");
     const [pagination, setPagination] = useState(null);
 
-    const [limit, setLimit] = useState(4);
+    const [limit, setLimit] = useState(3);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -63,13 +64,13 @@ const Header = ({ activeMenu }) => {
         const width = window.innerWidth;
         if (width <= 1199 && width >= 991) {
             console.log(width);
-            setLimit(3);
-        } else if (width <= 992  && width >= 768) {
             setLimit(2);
+        } else if (width <= 992  && width >= 768) {
+            setLimit(1);
         } else if (width <= 767) {
             setLimit(null);
         } else {
-            setLimit(4);
+            setLimit(3);
         }
     }
 
@@ -161,7 +162,7 @@ const Header = ({ activeMenu }) => {
                             (posts.length > 0 && query) && posts.map((item, index) => {
                                 return (
                                     <div className={styles.postCol} key={index}>
-                                        <Post data={item}/>
+                                        <Post2 data={item}/>
                                     </div>
                                 )
                             })
@@ -177,13 +178,13 @@ const Header = ({ activeMenu }) => {
                             {pagination?.nextPage && <button onClick={() => setSkip((pagination?.nextPage - 1) * limit)} className={styles.paginationBtn}>Next</button>}
                         </div>
                     }
-                    <Swiper>
+                    <Swiper spaceBetween={10}>
                         {
                             query &&
                             posts.map((item, index) => {
                                 return (
                                     <SwiperSlide key={index} className={styles.mobilesearch}>
-                                        <Post data={item}/>
+                                        <Post2 data={item}/>
                                     </SwiperSlide>
                                 )
                             })

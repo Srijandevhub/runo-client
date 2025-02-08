@@ -55,7 +55,7 @@
 .filterLimit {
     flex: 0 0 auto;
     max-width: 100%;
-    width: 5%;
+    width: 58px;
 }
 .filterLimit select {
     width: 100%;

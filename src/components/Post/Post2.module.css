@@ -51,6 +51,11 @@
     margin-bottom: 0;
     color: #E5E5E5;
     max-width: 340px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
 }
 .categories {
     position: absolute;
